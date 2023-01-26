@@ -73,7 +73,7 @@ class ModelSpider(scrapy.Spider):
         driver_options.add_argument('--disable-javascript')  # 禁用 javascript
         driver_options.add_argument('--blink-settings=imagesEnabled=false')  # 不加载图片，提升速度
         driver_options.add_argument('--headless')  # 浏览器不提供可视化页面
-        driver_options.add_argument('--ignore-certificate-errors')  # 禁用扩展插件并实现窗口最大化
+        driver_options.add_argument('--ignore-certificate-errors')  # 禁用证书错误
         driver_options.add_argument('--disable-gpu')  # 禁用 GPU 加速
         driver_options.add_argument('--disable-software-rasterizer')  # 禁用 3D 软件光栅化器
         driver_options.add_argument('--disable-extensions')  # 禁用扩展
