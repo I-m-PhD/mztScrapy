@@ -21,9 +21,12 @@ class ModelSpider(scrapy.Spider):
 
     def parse(self, response, **kwargs):
         ml = response.xpath('/html/body/section/div/div/main/ul/li/div/div[2]/h2/a')
+        x = 0
         for i in ml:
+            x += 1
             mn = i.xpath('text()').extract_first()
             mu = i.xpath('@href').extract_first()
+            print(x, mn, mu)
             yield response.follow(
                 url=mu,
                 callback=self.parse_album,
@@ -35,13 +38,16 @@ class ModelSpider(scrapy.Spider):
     def parse_album(self, response):
         mn = response.meta['model_name']
         al = response.xpath('/html/body/section/div/div/main/ul/li/div/div[3]/h2/a')
+        x = 0
         for i in al:
+            x += 1
             at = re.sub(
                 pattern='([^\u4e00-\u9fff\u0041-\u005a\u0061-\u007a])',
                 repl='',
                 string=i.xpath('text()').extract_first()
             )
             au = i.xpath('@href').extract_first()
+            print(x, at, au)
             yield response.follow(
                 url=au,
                 callback=self.parse_photo,
@@ -56,7 +62,7 @@ class ModelSpider(scrapy.Spider):
         at = response.meta['album_title']
 
         # 1. Reduce Selenium log level
-        LOGGER.setLevel(logging.CRITICAL)
+        LOGGER.setLevel(logging.FATAL)
         # 2. Set webdriver options
         driver_options = Options()
         driver_options.add_argument('--headless')  # 浏览器不提供可视化页面

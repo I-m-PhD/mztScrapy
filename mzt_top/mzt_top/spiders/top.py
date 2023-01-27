@@ -37,7 +37,7 @@ class TopSpider(scrapy.Spider):
         # yield item
         """ Selenium """
         driver_options = Options()
-        LOGGER.setLevel(logging.ERROR)
+        LOGGER.setLevel(logging.FATAL)
         driver_options.add_argument('--headless')
         driver_options.add_argument('--user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36 Edg/109.0.1518.61"')
         driver = webdriver.Chrome(options=driver_options)
