@@ -6,7 +6,6 @@ import logging
 from selenium.webdriver.remote.remote_connection import LOGGER
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-# from selenium.webdriver.safari.options import Options
 from selenium.webdriver.edge.options import Options
 from time import sleep
 
@@ -79,10 +78,9 @@ class ModelSpider(scrapy.Spider):
         driver_options.add_argument('--disable-extensions')  # 禁用扩展
         """
         # 3. Initialize webdriver
-        # driver = webdriver.Safari(options=driver_options)
         driver = webdriver.Edge(options=driver_options)
         # 4. Adjust window size and position
-        driver.set_window_rect(x=240, y=500, width=960, height=300)
+        driver.set_window_rect(x=440, y=500, width=1000, height=400)
         # 5. Selenium loads page (the url passed down from parse_album)
         driver.get(response.url)
         # 6. Selenium parses photos
@@ -106,7 +104,7 @@ class ModelSpider(scrapy.Spider):
                 value='.uk-position-center-right.f-swich'
             )
             np.click()
-            sleep(0.6)
+            sleep(1.2)
         # 9. Close
         driver.quit()
         print('//////// End of this album ////////')
