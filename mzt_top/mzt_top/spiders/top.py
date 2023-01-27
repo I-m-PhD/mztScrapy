@@ -38,8 +38,8 @@ class TopSpider(scrapy.Spider):
         """ Selenium """
         driver_options = Options()
         LOGGER.setLevel(logging.ERROR)
-        # driver_options.add_argument('--headless')
-        # driver_options.add_argument('--user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36 Edg/109.0.1518.61"')
+        driver_options.add_argument('--headless')
+        driver_options.add_argument('--user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36 Edg/109.0.1518.61"')
         driver = webdriver.Chrome(options=driver_options)
         driver.set_window_rect(x=440, y=500, width=1000, height=400)
         driver.get(response.url)
