@@ -44,7 +44,7 @@ class TopSpider(scrapy.Spider):
         driver.set_window_rect(x=440, y=500, width=1000, height=400)
         driver.get(response.url)
         mxi = int(driver.find_element(by=By.ID, value='progressBar').get_property('max'))
-        for x in range(1, min(15, mxi)):
+        for x in range(0, min(15, mxi)):
             iu = driver.find_element(by=By.CSS_SELECTOR, value='body > section:nth-child(3) > div > div > main > article > figure > img').get_property('src')
             item['img_url'] = iu
             yield item
