@@ -49,6 +49,6 @@ class TopSpider(scrapy.Spider):
             item['img_url'] = iu
             yield item
             driver.find_element(by=By.CSS_SELECTOR, value='.uk-position-center-right.f-swich').click()
-            time.sleep(1)
+            time.sleep(1.2)
             HtmlResponse(url=driver.current_url, body=driver.page_source, encoding='utf-8')
         driver.quit()
