@@ -47,7 +47,7 @@ class ModelSpider(scrapy.Spider):
                 string=i.xpath('text()').extract_first()
             )
             au = i.xpath('@href').extract_first()
-            print(x, at, au)
+            print(x, mn, at, au)
             yield response.follow(
                 url=au,
                 callback=self.parse_photo,
@@ -90,7 +90,7 @@ class ModelSpider(scrapy.Spider):
         # 5. Selenium loads page (the url passed down from parse_album)
         driver.get(response.url)
         # 6. Selenium parses photos
-        mp = int(response.css('#progressBar::attr(max)').extract_first())
+        mp = int(driver.find_element(by=By.ID, value='progressBar').get_property('max'))
         for x in range(0, min(15, mp)):
             print('//////// Photo: ', x+1, ' ////////')
             p = driver.find_element(
