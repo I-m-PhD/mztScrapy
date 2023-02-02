@@ -21,5 +21,5 @@ class MztTopPipeline(ImagesPipeline):
         )
 
     def file_path(self, request, response=None, info=None, *, item=None):
-        fn = r'top/%s/%s/%s' % (request.meta['model_name'], request.meta['album_head'], request.url[-8:])
+        fn = r'result-top/%s/%s/%s' % (request.meta['model_name'], request.meta['album_head'], request.url[-8:])
         return fn

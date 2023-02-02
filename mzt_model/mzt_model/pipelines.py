@@ -20,5 +20,5 @@ class MztModelPipeline(ImagesPipeline):
         )
 
     def file_path(self, request, response=None, info=None, *, item=None):
-        fn = r'model/%s/%s/%s' % (request.meta['model_name'], request.meta['album_title'], request.url[-8:])
+        fn = r'result-model/%s/%s/%s' % (request.meta['model_name'], request.meta['album_title'], request.url[-8:])
         return fn

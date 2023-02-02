@@ -69,7 +69,7 @@ DOWNLOADER_MIDDLEWARES = {
 ITEM_PIPELINES = {
     'mzt_top.pipelines.MztTopPipeline': 300,
 }
-IMAGES_STORE = '../'
+IMAGES_STORE = './'
 IMAGES_EXPIRES = 30
 
 # Enable and configure the AutoThrottle extension (disabled by default)
